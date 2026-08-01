@@ -1,0 +1,13 @@
+# Usar una imagen de Java
+FROM eclipse-temurin:21-jdk
+
+# Crear directorio de la app
+WORKDIR /app
+
+# Copiar el JAR generado
+COPY target/msvc-eventos-0.0.1-SNAPSHOT.jar app.jar
+
+EXPOSE 8004
+
+# Comando para ejecutar el servicio
+ENTRYPOINT ["java", "-jar", "app.jar"]

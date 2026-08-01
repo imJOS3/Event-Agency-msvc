@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: msvc-proveedores
+
+  config:
+    import: optional:configserver:http://config-server:8888

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: msvc-employees
+
+  config:
+    import: optional:configserver:http://config-server:8888
+

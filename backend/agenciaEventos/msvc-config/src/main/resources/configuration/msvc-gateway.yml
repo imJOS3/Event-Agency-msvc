@@ -1,0 +1,100 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: msvc-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: msvc-auth-auth
+          uri: lb://msvc-auth
+          predicates:
+            - Path=/api/auth/**
+
+        - id: msvc-auth-roles
+          uri: lb://msvc-auth
+          predicates:
+            - Path=/api/roles/**
+
+        - id: msvc-auth-users
+          uri: lb://msvc-auth
+          predicates:
+            - Path=/api/users/**
+
+        - id: msvc-clientes
+          uri: lb://msvc-clientes
+          predicates:
+            - Path=/api/clients/**
+
+        - id: msvc-employees
+          uri: lb://msvc-employees
+          predicates:
+            - Path=/api/employees/**
+
+        - id: msvc-eventos
+          uri: lb://msvc-eventos
+          predicates:
+            - Path=/api/events/**
+
+        - id: msvc-facturacion-invoices
+          uri: lb://msvc-facturacion
+          predicates:
+            - Path=/api/invoices/**
+
+        - id: msvc-facturacion-invoice-details
+          uri: lb://msvc-facturacion
+          predicates:
+            - Path=/api/invoice-details/**
+
+
+        - id: msvc-inventario-inventory
+          uri: lb://msvc-inventory
+          predicates:
+            - Path=/api/inventory/**
+
+        - id: msvc-inventario-products
+          uri: lb://msvc-inventario
+          predicates:
+            - Path=/api/products/**
+
+        - id: msvc-inventario-categories
+          uri: lb://msvc-inventario
+          predicates:
+            - Path=/api/categories/**
+
+
+        - id: msvc-pagos-bonuses
+          uri: lb://msvc-pagos
+          predicates:
+            - Path=/api/bonuses/**
+
+        - id: msvc-pagos-client-payments
+          uri: lb://msvc-pagos
+          predicates:
+            - Path=/api/client-payments/**
+
+        - id: msvc-pagos-employee-payments
+          uri: lb://msvc-pagos
+          predicates:
+            - Path=/api/employee-payments/**
+
+        - id: msvc-pagos-installments
+          uri: lb://msvc-pagos
+          predicates:
+            - Path=/api/installments/**
+
+        - id: msvc-proveedores-installments
+          uri: lb://msvc-proveedores
+          predicates:
+            - Path=/api/providers/**
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
